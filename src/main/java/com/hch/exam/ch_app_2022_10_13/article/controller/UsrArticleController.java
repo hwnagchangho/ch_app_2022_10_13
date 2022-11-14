@@ -1,6 +1,8 @@
 package com.hch.exam.ch_app_2022_10_13.article.controller;
 
+import com.hch.exam.ch_app_2022_10_13.article.service.ArticleService;
 import com.hch.exam.ch_app_2022_10_13.vo.Article;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,10 +13,15 @@ import java.util.List;
 @Controller
 public class UsrArticleController {
 
-  private int articleLastId;
+  // 인스턴스 변수 시작
+  @Autowired //컴포넌트로 등록이 된 것들에만 붙혀준다. Service Repository 등등
+  private ArticleService articleService;
+  int articleLastId;
   private List<Article> articles;
+  // 인스턴스 변수 끝
 
   UsrArticleController(){
+//    articleService = new ArticleService(); 이런식으로 객체생성을 안해도 된다. 컴포넌트로 등록이되었기때문
     articles = new ArrayList<>();
     articleLastId = 0;
 
