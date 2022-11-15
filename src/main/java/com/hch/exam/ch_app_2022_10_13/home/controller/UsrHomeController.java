@@ -1,6 +1,5 @@
 package com.hch.exam.ch_app_2022_10_13.home.controller;
 
-import com.hch.exam.ch_app_2022_10_13.article.vo.Article;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,31 +50,6 @@ public class UsrHomeController {
     map.put("철수나이", 22);
     map.put("영희나이", 21);
     return map;
-  }
-  @RequestMapping("/usr/home/getArticle")
-  @ResponseBody
-  public Article getArticle() {
-    Article article = new Article(1, "제목1", "내용1");
-
-    return article;
-  }
-
-  @RequestMapping("/usr/home/getArticles")
-  @ResponseBody
-  public List<Article> getArticles() {
-    Article article1 = new Article(1, "제목1", "내용1");
-    Article article2 = new Article(2, "제목2", "내용2");
-
-    List<Article> list = new ArrayList<>();
-    list.add(article1);
-    list.add(article2);
-    return list;
-  }
-  @RequestMapping("/usr/home/doSetCount")
-  @ResponseBody
-  public String doSetCount(int count) {
-    this.count = count;
-    return "count의 값이 " + this.count + "으로 초기화 되었습니다.";
   }
 
 }
