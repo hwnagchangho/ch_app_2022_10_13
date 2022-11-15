@@ -12,7 +12,6 @@ public class ArticleService {
 
   public ArticleService(ArticleRepository articleRepository){
     this.articleRepository = articleRepository;
-    articleRepository.makeTestData();
   }
 
 
@@ -33,6 +32,6 @@ public class ArticleService {
   }
 
   public void modifyArticle(int id, String title, String body) {
-    articleRepository.modifyArticle(id, title,body);
+    articleRepository.modifyArticle(id, title, body);
   }
 }

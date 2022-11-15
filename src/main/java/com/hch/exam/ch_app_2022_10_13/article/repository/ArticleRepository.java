@@ -1,66 +1,26 @@
 package com.hch.exam.ch_app_2022_10_13.article.repository;
 
 import com.hch.exam.ch_app_2022_10_13.vo.Article;
-import org.springframework.stereotype.Component;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class ArticleRepository {
-  private int articleLastId;
-  private List<Article> articles;
+@Mapper
+public interface ArticleRepository {
 
+  public Article writeArticle(String title, String body);
 
-  public ArticleRepository(){
-    articles = new ArrayList<>();
-    articleLastId = 0;
+  @Select("SELECT * FROM article WHERE id = #{id}")
+  public Article getArticle(int id);
 
-//    makeTestData(); => articleService 에서 해주어야함
-  }
-  public void makeTestData() {
-    for(int i = 1; i <=10; i++){
-      String title = "제목" + i;
-      String body = "내용" + i;
+  //DELETE FROM article WHERE id = ?
+  public void deleteArticle(int id);
 
-      writeArticle(title, body);
-    }
-  }
+  // SELECT * FROM article ORDER BY id DESC
+  public List<Article> getArticles();
 
-  public Article getArticle (int id){
-    for( Article article : articles){
-      if(article.getId() == id){
-//     롬복을 적용했기 때문에 getId를 써준다.
-        return article;
-      }
-    }
-    return null;
-  }
+  // UPDATE INTO article SET title = ?, body = ?, updateDate = NOW() WHERE id = ?
+  public void modifyArticle(int id, String title, String body);
 
-  public Article writeArticle(String title, String body) {
-    int id = articleLastId + 1;
-
-    Article article = new Article(id, title, body);
-
-    articles.add(article);
-    articleLastId = id;
-
-    return article;
-  }
-
-  public void deleteArticle (int id){
-    Article article = getArticle(id);
-
-    articles.remove(article);
-  }
-  public List<Article> getArticles (){
-    return articles;
-  }
-
-  public void modifyArticle(int id, String title, String body) {
-    Article article = getArticle(id);
-
-    article.setTitle(title);
-    article.setBody(body);
-  }
 }
