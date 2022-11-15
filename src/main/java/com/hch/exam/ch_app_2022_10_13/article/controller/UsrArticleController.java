@@ -18,7 +18,8 @@ public class UsrArticleController {
   @RequestMapping("/usr/article/doAdd")
   @ResponseBody
   public Article doAdd (String title, String body){
-    Article article = articleService.writeArticle(title, body);
+    int id = articleService.writeArticle(title, body);
+    Article article = articleService.getArticle(id);
 
     return article;
   }
@@ -31,7 +32,7 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/getArticle")
   @ResponseBody
-  public Object getArticleAction (int id){ //getArticle이라는 로직이 반복되면 안되기 때문에 메서드명을 바꿔준것이다.
+  public Object getArticle (int id){ //getArticle이라는 로직이 반복되면 안되기 때문에 메서드명을 바꿔준것이다.
     Article article = articleService.getArticle(id);
 
     if( article == null) {
