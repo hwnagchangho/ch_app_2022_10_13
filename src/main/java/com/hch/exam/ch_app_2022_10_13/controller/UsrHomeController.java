@@ -1,4 +1,4 @@
-package com.hch.exam.ch_app_2022_10_13.home.controller;
+package com.hch.exam.ch_app_2022_10_13.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

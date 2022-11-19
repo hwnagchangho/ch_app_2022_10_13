@@ -1,4 +1,4 @@
-package com.hch.exam.ch_app_2022_10_13.article.repository;
+package com.hch.exam.ch_app_2022_10_13.repository;
 
 import com.hch.exam.ch_app_2022_10_13.vo.Article;
 import org.apache.ibatis.annotations.*;

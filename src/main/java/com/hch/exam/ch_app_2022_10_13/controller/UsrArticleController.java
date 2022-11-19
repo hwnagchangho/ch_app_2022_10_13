@@ -1,6 +1,6 @@
-package com.hch.exam.ch_app_2022_10_13.article.controller;
+package com.hch.exam.ch_app_2022_10_13.controller;
 
-import com.hch.exam.ch_app_2022_10_13.article.service.ArticleService;
+import com.hch.exam.ch_app_2022_10_13.service.ArticleService;
 import com.hch.exam.ch_app_2022_10_13.vo.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
-package com.hch.exam.ch_app_2022_10_13.article.service;
+package com.hch.exam.ch_app_2022_10_13.service;
 
-import com.hch.exam.ch_app_2022_10_13.article.repository.ArticleRepository;
+import com.hch.exam.ch_app_2022_10_13.repository.ArticleRepository;
 import com.hch.exam.ch_app_2022_10_13.vo.Article;
 import org.springframework.stereotype.Service;
 

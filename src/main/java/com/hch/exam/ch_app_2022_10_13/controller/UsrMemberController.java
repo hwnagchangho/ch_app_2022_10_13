@@ -1,6 +1,6 @@
-package com.hch.exam.ch_app_2022_10_13.member.controller;
+package com.hch.exam.ch_app_2022_10_13.controller;
 
-import com.hch.exam.ch_app_2022_10_13.member.service.MemberService;
+import com.hch.exam.ch_app_2022_10_13.service.MemberService;
 import com.hch.exam.ch_app_2022_10_13.util.Ut;
 import com.hch.exam.ch_app_2022_10_13.vo.Member;
 import org.springframework.stereotype.Controller;
