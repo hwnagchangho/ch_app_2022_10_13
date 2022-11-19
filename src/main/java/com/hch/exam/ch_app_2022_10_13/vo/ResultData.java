@@ -26,6 +26,8 @@ public class ResultData {
 
     return rd;
   }
+
+
 //  데이터를 2개만받을 경우 3개받을경우가 있기 때문에 둘다 만들어주었따.
 //  예를들어 실패했을 경우에는 data1를 보여줄 필요가 없기때문에 2개만 받는다.
 
@@ -35,5 +37,9 @@ public class ResultData {
 
   public boolean isFail(){
     return isSuccess() == false;
+  }
+
+  public static ResultData newData(ResultData joinRd, Object newData) {
+    return ResultData.from(joinRd.getResultCode(), joinRd.getMsg(), newData);
   }
 }
