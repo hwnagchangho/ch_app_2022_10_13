@@ -1,7 +1,9 @@
 package com.hch.exam.ch_app_2022_10_13.controller;
 
 import com.hch.exam.ch_app_2022_10_13.service.ArticleService;
+import com.hch.exam.ch_app_2022_10_13.util.Ut;
 import com.hch.exam.ch_app_2022_10_13.vo.Article;
+import com.hch.exam.ch_app_2022_10_13.vo.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,14 +34,14 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/getArticle")
   @ResponseBody
-  public Object getArticle (int id){ //getArticle이라는 로직이 반복되면 안되기 때문에 메서드명을 바꿔준것이다.
+  public ResultData getArticle (int id){
     Article article = articleService.getArticle(id);
 
     if( article == null) {
-      return id + "번 게시물이 존재하지 않습니다.";
+      return ResultData.from("F-1", Ut.f("%d번 게시물이 존재하지 않습니다.", id));
     }
 
-    return article;
+    return ResultData.from("S-1", Ut.f("%d번 게시물입니다.", id), article);
   }
 
   @RequestMapping("/usr/article/doDelete")
