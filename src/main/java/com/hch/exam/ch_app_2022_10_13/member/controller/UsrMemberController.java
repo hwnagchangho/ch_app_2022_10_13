@@ -50,6 +50,11 @@ public class UsrMemberController {
     if(id == -1 ){
       return "이미 사용중인 아이디입니다.";
     }
+
+    if ( id == -2 ) {
+      return "해당 이름과 이메일은 이미 사용중입니다.";
+    }
+    
     return member;
   }
 }
