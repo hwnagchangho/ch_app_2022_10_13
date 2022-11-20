@@ -8,6 +8,7 @@
     <div class="table-box-type-1">
       <table>
         <colgroup>
+
           <col width="80"/>
           <col width="150"/>
           <col width="150"/>
