@@ -4,9 +4,9 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <title>Document</title>
+  <title>메인</title>
 </head>
 <body>
-
+  <div>hi</div>
 </body>
 </html>
