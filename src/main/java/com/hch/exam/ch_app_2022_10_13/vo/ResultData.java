@@ -8,20 +8,23 @@ public class ResultData<DT> {
   @Getter
   private String msg;
   @Getter
+  private String data1Name;
+  @Getter
   private DT data1;
 
-  private ResultData(){
+  private ResultData() {
 
   }
 
-  public static ResultData from(String resultCode, String msg){
-    return from(resultCode, msg, null);
+  public static ResultData from(String resultCode, String msg) {
+    return from(resultCode, msg, null, null);
   }
 
-  public static <DT> ResultData<DT> from(String resultCode, String msg, DT data1){
+  public static <DT> ResultData<DT> from(String resultCode, String msg, String data1Name, DT data1) {
     ResultData<DT> rd = new ResultData<DT>();
     rd.resultCode = resultCode;
     rd.msg = msg;
+    rd.msg = data1Name;
     rd.data1 = data1;
 
     return rd;
@@ -29,15 +32,15 @@ public class ResultData<DT> {
 //  데이터를 2개만받을 경우 3개받을경우가 있기 때문에 둘다 만들어주었따.
 //  예를들어 실패했을 경우에는 data1를 보여줄 필요가 없기때문에 2개만 받는다.
 
-  public boolean isSuccess(){
+  public boolean isSuccess() {
     return resultCode.startsWith("S-");
   }
 
-  public boolean isFail(){
+  public boolean isFail() {
     return isSuccess() == false;
   }
 
-  public static ResultData newData(ResultData joinRd, Object newData) {
-    return ResultData.from(joinRd.getResultCode(), joinRd.getMsg(), newData);
+  public static <DT> ResultData<DT> newData(ResultData oldRd, String data1Name, DT data1) {
+    return from(oldRd.getResultCode(), oldRd.getMsg(), data1Name, data1);
   }
 }
