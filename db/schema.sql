@@ -82,3 +82,5 @@ nickname = "user2",
 cellphoneNo = "010-4828-1573",
 email = "chang2210@naver.com";
 
+#게시물 테이블에 회원번호칼럼 추가
+ALTER TABLE article ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER updateDate;
