@@ -49,4 +49,5 @@ public interface MemberRepository {
           AND M.email = #{email}
           """)
   Member getMemberByNameAndEmail(@Param("name") String name, @Param("email") String email);
+
 }
