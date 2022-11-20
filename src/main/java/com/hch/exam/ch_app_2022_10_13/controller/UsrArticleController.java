@@ -19,7 +19,8 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/doAdd")
   @ResponseBody
-  public ResultData doAdd (String title, String body){
+  public ResultData<Article> doAdd (String title, String body){
+//    <Article>은 안붙혀도 상관없는데 일단 붙혀놓자
 
     if(Ut.empty(title)){
       return ResultData.from("F-1", "title을(를) 입력해주세요");
@@ -35,7 +36,7 @@ public class UsrArticleController {
 
     Article article = articleService.getArticle(id);
 
-    return ResultData.from(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), article);
+    return ResultData.newData(writeArticleRd, article);
   }
 
   @RequestMapping("/usr/article/getArticles")
