@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -19,8 +20,19 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/doAdd")
   @ResponseBody
-  public ResultData<Article> doAdd (String title, String body){
+  public ResultData<Article> doAdd (HttpSession httpSession, String title, String body){
 //    <Article>은 안붙혀도 상관없는데 일단 붙혀놓자
+    boolean isLogined = false;
+    int loginedMemberId = 0;
+
+    if(httpSession.getAttribute("loginedMemberId") != null){
+      isLogined = true;
+      loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
+    }
+
+    if(isLogined == false){
+      return ResultData.from("F-3", "로그인 후 이용해주세요.");
+    }
 
     if(Ut.empty(title)){
       return ResultData.from("F-1", "title을(를) 입력해주세요");
@@ -30,7 +42,9 @@ public class UsrArticleController {
       return ResultData.from("F-2", "body(을)를 입력해주세요");
     }
 
-    ResultData<Integer> writeArticleRd = articleService.writeArticle(title, body);
+
+
+    ResultData<Integer> writeArticleRd = articleService.writeArticle(loginedMemberId, title, body);
 
     int id = writeArticleRd.getData1();
 
