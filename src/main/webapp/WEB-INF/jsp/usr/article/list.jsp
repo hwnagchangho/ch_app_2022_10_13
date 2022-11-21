@@ -31,7 +31,7 @@
             <th>${article.updateDate.substring(2,16)}</th>
             <th>${article.extra__writerName}</th>
             <th>
-              <a href="../article/detail?id=${article.id}" class="hover:underline">${article.title}</a>
+              <a class="btn-text-link" href="../article/detail?id=${article.id}">${article.title}</a>
             </th>
           </tr>
         </c:forEach>
