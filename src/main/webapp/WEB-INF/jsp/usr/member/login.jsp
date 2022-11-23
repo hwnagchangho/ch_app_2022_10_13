@@ -26,7 +26,7 @@
         <tr>
           <th>로그인</th>
           <td>
-            <input type="submit" value="로그인">
+            <input style="cursor:pointer" type="submit" value="로그인">
             <button type="button" onclick="history.back();">뒤로가기</button>
           </td>
         </tr>
