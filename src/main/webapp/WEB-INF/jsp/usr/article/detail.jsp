@@ -17,11 +17,11 @@
         </tr>
         <tr>
           <th>작성날짜</th>
-          <td>${article.regDate}</td>
+          <td>${article.regDateForPrint}</td>
         </tr>
         <tr>
           <th>수정날짜</th>
-          <td>${article.updateDate}</td>
+          <td>${article.updateDateForPrint}</td>
         </tr>
         <tr>
           <th>작성자</th>
@@ -38,11 +38,13 @@
         </tbody>
       </table>
     </div>
-    <div class="btn">
-      <button class="btn-text-link" type="button" onclick="history.back()" >뒤로가기</button>
-      <a class="btn-text-link" href="../article/modify?id=${article.id}">게시물 수정</a>
+    <div class="btns">
+      <button class="btn btn-outline btn-accent" type="button" onclick="history.back()" >뒤로가기</button>
+      <c:if test="${article.extra__actorCanModify}">
+        <a class="btn btn-outline btn-accent" href="../article/modify?id=${article.id}">게시물 수정</a>
+      </c:if>
       <c:if test="${article.extra__actorCanDelete}">
-        <a class="btn-text-link" onclick="if( confirm('정말 삭제하시겠습니까?') == false ) return false" href="../article/doDelete?id=${article.id}">게시물 삭제</a>
+        <a class="btn btn-outline btn-accent" onclick="if( confirm('정말 삭제하시겠습니까?') == false ) return false" href="../article/doDelete?id=${article.id}">게시물 삭제</a>
       </c:if>
     </div>
   </div>

@@ -14,15 +14,19 @@
         <tbody>
         <tr>
           <th>번호</th>
-          <td>${article.id}</td>
+          <td>
+            <div class="badge badge-outline">
+              ${article.id}
+            </div>
+          </td>
         </tr>
         <tr>
           <th>작성날짜</th>
-          <td>${article.regDate}</td>
+          <td>${article.regDateForPrint}</td>
         </tr>
         <tr>
           <th>수정날짜</th>
-          <td>${article.updateDate}</td>
+          <td>${article.updateDateForPrint}</td>
         </tr>
         <tr>
           <th>작성자</th>
@@ -31,20 +35,20 @@
         <tr>
           <th>제목</th>
           <td>
-            <input name="title" class="w-96" type="text" placeholder="제목을 입력해주세요." value="${article.title}">
+            <input name="title" class="input input-bordered w-96 max-w-xs" type="text" placeholder="제목을 입력해주세요." value="${article.title}">
           </td>
         </tr>
         <tr>
           <th>내용</th>
           <td>
-            <textarea name="body" class="w-full" rows="10">${article.body}</textarea>
+            <textarea name="body" class="input input-bordered w-96 max-w-xs" rows="10">${article.body}</textarea>
           </td>
         </tr>
         <tr>
           <th>수정</th>
           <td>
-            <input type="submit" value="수정">
-            <button type="button" onclick="history.back();">뒤로가기</button>
+            <input type="submit" class="btn btn-outline btn-success" value="수정">
+            <button type="button" class="btn btn-outline btn-info" onclick="history.back();">뒤로가기</button>
           </td>
         </tr>
         </tbody>

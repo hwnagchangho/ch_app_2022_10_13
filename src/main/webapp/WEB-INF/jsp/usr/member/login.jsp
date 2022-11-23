@@ -14,20 +14,20 @@
         <tr>
           <th>로그인 아이디</th>
           <td>
-            <input name="loginId" class="w-96" type="text" placeholder="아이디를 입력해주세요.">
+            <input name="loginId" class="input input-bordered w-96 max-w-xs" type="text" placeholder="아이디를 입력해주세요.">
           </td>
         </tr>
         <tr>
           <th>로그인 비밀번호</th>
           <td>
-            <input name="loginPw" class="w-96" type="text" placeholder="비밀번호를 입력해주세요.">
+            <input name="loginPw" class="input input-bordered w-96 max-w-xs" type="password" placeholder="비밀번호를 입력해주세요.">
           </td>
         </tr>
         <tr>
           <th>로그인</th>
           <td>
-            <input style="cursor:pointer" type="submit" value="로그인">
-            <button type="button" onclick="history.back();">뒤로가기</button>
+            <button type="submit" class="btn btn-outline btn-success">로그인</button>
+            <button type="button" class="btn btn-outline btn-info" onclick="history.back();">뒤로가기</button>
           </td>
         </tr>
       </table>

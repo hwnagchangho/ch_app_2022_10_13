@@ -27,8 +27,8 @@
         <c:forEach  var="article" items="${articles}">
           <tr>
             <th>${article.id}</th>
-            <th>${article.regDate.substring(2,16)}</th>
-            <th>${article.updateDate.substring(2,16)}</th>
+            <th>${article.regDateForPrint}</th>
+            <th>${article.updateDateForPrint}</th>
             <th>${article.extra__writerName}</th>
             <th>
               <a class="btn-text-link" href="../article/detail?id=${article.id}">${article.title}</a>
