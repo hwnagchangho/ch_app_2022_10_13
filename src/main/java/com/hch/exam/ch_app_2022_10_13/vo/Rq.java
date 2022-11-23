@@ -1,5 +1,6 @@
 package com.hch.exam.ch_app_2022_10_13.vo;
 
+import com.hch.exam.ch_app_2022_10_13.util.Ut;
 import lombok.Getter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,13 +37,7 @@ public class Rq {
   public void printHistoryBackJs(String msg) {
     resp.setContentType("text/html; charset=UTF-8"); //한글
 
-    println("<script>");
-
-    println("alert('" + msg + "');");
-
-    println("history.back();");
-
-    println("</script>");
+    print(Ut.jsHistoryBack(msg));
 
   }
   public void print(String str){
@@ -53,15 +48,17 @@ public class Rq {
     }
   }
 
-  private void println(String str) {
-    print(str + "\n");
-  }
-
   public void login(Member member) {
     session.setAttribute("loginedMemberId", member.getId());
   }
 
   public void logout() {
     session.removeAttribute("loginedMemberId");
+  }
+
+  public String historyBackJsOnView(String msg) {
+    req.setAttribute("msg", msg);
+    req.setAttribute("historyBack", true);
+    return "common/js";
   }
 }
