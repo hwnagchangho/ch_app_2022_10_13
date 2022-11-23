@@ -1,5 +1,6 @@
 package com.hch.exam.ch_app_2022_10_13.interceptor;
 
+import com.hch.exam.ch_app_2022_10_13.vo.Rq;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -10,7 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 public class NeedLoginInterceptor implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handle) throws Exception {
-    System.out.println("로그인 필요");
+    Rq rq = (Rq) req.getAttribute("rq");
+
+    if( !rq.isLogined() ) {
+      rq.printHistoryBackJs("로그인 후 이용해주세요.");
+      return false;
+    }
 
     return HandlerInterceptor.super.preHandle(req, resp, handle);
   }
