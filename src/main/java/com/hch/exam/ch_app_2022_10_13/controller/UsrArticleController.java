@@ -94,8 +94,7 @@ public class UsrArticleController {
     return Ut.jsReplace(Ut.f("%d번 게시물을 삭제하였습니다.", id), "../article/list");
   }
   @RequestMapping("/usr/article/modify")
-  @ResponseBody
-  public String showModify(HttpServletRequest req, int id, String title, String body) {
+  public String showModify(HttpServletRequest req, int id, Model model) {
 
     Rq rq = (Rq) req.getAttribute("rq");
 
@@ -110,6 +109,9 @@ public class UsrArticleController {
     if (actorCanModifyRd.isFail()) {
       return rq.historyBackJsOnView(actorCanModifyRd.getMsg());
     }
+
+    model.addAttribute("article", article);
+
     return "/usr/article/modify";
   }
   @RequestMapping("/usr/article/doModify")
