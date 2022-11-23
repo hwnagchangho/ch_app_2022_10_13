@@ -30,7 +30,7 @@ public class Ut {
                 }
                 history.back();
                 </script>
-                """);
+                """, msg);
   }
 
   public static String jsReplace(String msg, String uri) {

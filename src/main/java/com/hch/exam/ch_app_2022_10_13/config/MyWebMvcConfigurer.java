@@ -1,4 +1,4 @@
-package com.hch.exam.ch_app_2022_10_13;
+package com.hch.exam.ch_app_2022_10_13.config;
 
 import com.hch.exam.ch_app_2022_10_13.interceptor.BeforeActionInterceptor;
 import com.hch.exam.ch_app_2022_10_13.interceptor.NeedLoginInterceptor;
