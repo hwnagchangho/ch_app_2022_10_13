@@ -41,7 +41,7 @@
         <tr>
           <th>내용</th>
           <td>
-            <textarea name="body" class="input input-bordered w-96 max-w-xs" rows="10">${article.body}</textarea>
+            <textarea name="body" class="textarea textarea-bordered w-full" placeholder="내용을 입력해주세요." rows="10">${article.body}</textarea>
           </td>
         </tr>
         <tr>

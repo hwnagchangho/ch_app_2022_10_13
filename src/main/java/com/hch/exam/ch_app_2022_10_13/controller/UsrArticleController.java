@@ -20,9 +20,14 @@ public class UsrArticleController {
   @Autowired //컴포넌트로 등록이 된 것들에만 붙혀준다. Service Repository 등등
   private ArticleService articleService;
 
-  @RequestMapping("/usr/article/doAdd")
+  @RequestMapping("/usr/article/write")
+  public String showWrite(HttpServletRequest req) {
+    return "/usr/article/write";
+  }
+
+  @RequestMapping("/usr/article/doWrite")
   @ResponseBody
-  public ResultData<Article> doAdd(HttpServletRequest req, String title, String body) {
+  public ResultData<Article> doWrite(HttpServletRequest req, String title, String body) {
     Rq rq = (Rq) req.getAttribute("rq");
 
     if (rq.isLogined() == false) {

@@ -38,6 +38,9 @@
         </tbody>
       </table>
     </div>
+    <div class="btns">
+        <a class="btn btn-outline btn-accent" href="../article/write">게시물 작성하기</a>
+    </div>
   </div>
 </section>
 <%@ include file="../common/foot.jspf"%>

@@ -1,5 +1,6 @@
 package com.hch.exam.ch_app_2022_10_13.vo;
 
+import com.hch.exam.ch_app_2022_10_13.service.MemberService;
 import com.hch.exam.ch_app_2022_10_13.util.Ut;
 import lombok.Getter;
 
@@ -14,10 +15,13 @@ public class Rq {
   @Getter
   private int loginedMemberId;
 
+  @Getter
+  private Member loginedMember;
+
   private HttpServletRequest req;
   private HttpServletResponse resp;
   private HttpSession session;
-  public Rq(HttpServletRequest req, HttpServletResponse resp) {
+  public Rq(HttpServletRequest req, HttpServletResponse resp, MemberService memberService) {
     this.req =req;
     this.resp = resp;
     this.session = req.getSession();
@@ -28,10 +32,12 @@ public class Rq {
     if (session.getAttribute("loginedMemberId") != null) {
       isLogined = true;
       loginedMemberId = (int) session.getAttribute("loginedMemberId");
+      loginedMember = memberService.getMemberById(loginedMemberId);
     }
 
     this.isLogined = isLogined;
     this.loginedMemberId = loginedMemberId; //위 로직에서 얻은 것들을 넣어준다.
+    this.loginedMember = loginedMember;
   }
 
   public void printHistoryBackJs(String msg) {
