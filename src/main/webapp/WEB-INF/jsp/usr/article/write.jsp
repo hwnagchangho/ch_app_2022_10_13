@@ -3,7 +3,7 @@
 
 <c:set var="pageTitle" value="게시물 등록" />
 <%@ include file="../common/head.jspf"%>
-<section class="mt-5">
+<section class="con-min-width mt-5">
   <div class="con px-3">
     <form class="table-box-type-1" method="POST" action="../article/doWrite">
       <input type="hidden" name="id" value="${article.id}">
