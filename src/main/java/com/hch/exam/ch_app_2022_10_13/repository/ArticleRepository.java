@@ -67,4 +67,20 @@ public interface ArticleRepository {
 
   @Select("SELECT LAST_INSERT_ID()")
   int getLastInsertId();
+
+  @Select("""
+          <script>          
+          SELECT A.*,
+          M.nickname AS extra__writerName
+          FROM article AS A
+          LEFT JOIN member AS M
+          ON A.memberId = M.id 
+          WHERE 1
+          <if test="boardId != 0"> 
+            AND A.boardId = #{boardId}
+          </if>   
+          ORDER BY A.id DESC
+          </script>          
+          """) //만약에 boardId가 0이 들어오면 전처럼 구분없이 전체가 다 나온다. 왜냐면 받을때 boardId=?로 받기때문이다.
+  public List<Article> getArticles(@Param("boardId") int boardId);
 }
