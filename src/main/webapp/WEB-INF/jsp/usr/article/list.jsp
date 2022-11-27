@@ -5,6 +5,9 @@
 <%@ include file="../common/head.jspf"%>
 <section class="con-min-width mt-5">
   <div class="con px-3">
+    <divc>
+      게시물 개수: ${articlesCount}건
+    </divc>
     <div class="table-box-type-1">
       <table>
         <colgroup>
