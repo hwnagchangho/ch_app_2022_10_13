@@ -3,12 +3,17 @@ package com.hch.exam.ch_app_2022_10_13.vo;
 import com.hch.exam.ch_app_2022_10_13.service.MemberService;
 import com.hch.exam.ch_app_2022_10_13.util.Ut;
 import lombok.Getter;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@Component
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Rq {
   @Getter
   private boolean isLogined;
