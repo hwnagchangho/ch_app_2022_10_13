@@ -19,15 +19,36 @@
           </td>
         </tr>
         <tr>
+          <th>게시판</th>
+          <td>
+            <select class="select selected-boarded" name="boardId">
+              <option selected disabled>게시판을 선택해주세요.</option>
+              <option value="1">공지사항 게시판</option>
+              <option value="2">자유 게시판</option>
+            </select>
+            <!--
+              <label>
+                공지
+                <input type="radio" name="boardId" value="1"/>
+              </label>
+              <label>
+                자유
+                <input type="radio" name="boardId" value="2"/>
+              </label>
+              이런것도 있다.
+              -->
+          </td>
+        </tr>
+        <tr>
           <th>제목</th>
           <td>
-            <input name="title" class="input input-bordered w-96 max-w-xs" type="text" placeholder="제목을 입력해주세요."/>
+            <input required="required" name="title" class="input input-bordered w-96 max-w-xs" type="text" placeholder="제목을 입력해주세요."/>
           </td>
         </tr>
         <tr>
           <th>내용</th>
           <td>
-            <textarea name="body" class="textarea textarea-bordered w-full" rows="10"></textarea>
+            <textarea required="required" name="body" class="textarea textarea-bordered w-full" rows="10"></textarea>
           </td>
         </tr>
         <tr>

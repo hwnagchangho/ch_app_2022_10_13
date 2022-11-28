@@ -43,6 +43,8 @@ public class Rq {
     this.isLogined = isLogined;
     this.loginedMemberId = loginedMemberId; //위 로직에서 얻은 것들을 넣어준다.
     this.loginedMember = loginedMember;
+
+    this.req.setAttribute("rq", this); //119강에서 했어야함 , BeforeActionInterceptor 에서 해주던걸 여기서해줌
   }
 
   public void printHistoryBackJs(String msg) {

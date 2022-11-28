@@ -15,10 +15,11 @@ public interface ArticleRepository {
           SET regDate = NOW(), 
           updateDate = NOW(),
           memberId = #{memberId}, 
+          boardId = #{boardId}, 
           title=#{title}, 
           body=#{body}
           """)
-  public void writeArticle(@Param("memberId") int memberId, @Param("title") String title, @Param("body")String body);
+  public void writeArticle(@Param("memberId") int memberId, @Param("boardId") int boardId, @Param("title") String title, @Param("body")String body);
 
   @Select("""
           SELECT A.*,
