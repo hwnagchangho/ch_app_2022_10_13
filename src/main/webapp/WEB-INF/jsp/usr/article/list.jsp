@@ -5,9 +5,10 @@
 <%@ include file="../common/head.jspf"%>
 <section class="con-min-width mt-5">
   <div class="con px-3">
-    <divc>
+    <div>
       게시물 개수: ${articlesCount}건
-    </divc>
+      <a class="btn btn-outline btn-accent" href="../article/write">게시물 작성하기</a>
+    </div>
     <div class="table-box-type-1">
       <table>
         <colgroup>
@@ -41,8 +42,12 @@
         </tbody>
       </table>
     </div>
-    <div class="btns">
-        <a class="btn btn-outline btn-accent" href="../article/write">게시물 작성하기</a>
+    <div class="page-menu mt-3 flex justify-center">
+      <div class="btn-group">
+        <c:forEach begin="1" end="10" var="i" step="1">
+          <a class="btn btn-sm ${param.page == i ? 'btn-active' : ''}" href="?page=${i}">${i}</a>
+        </c:forEach>
+      </div>
     </div>
   </div>
 </section>
