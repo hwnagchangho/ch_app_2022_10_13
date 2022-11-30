@@ -10,7 +10,7 @@
       <a class="btn btn-outline btn-accent" href="../article/write">게시물 작성하기</a>
     </div>
     <div class="table-box-type-1">
-      <table>
+      <table class="table table-fixed">
         <colgroup>
           <col width="80"/>
           <col width="150"/>
@@ -20,11 +20,11 @@
         </colgroup>
         <thead>
         <tr>
-          <th>제목</th>
+          <th>번호</th>
           <th>작성날짜</th>
           <th>수정날짜</th>
           <th>작성자</th>
-          <th>내용</th>
+          <th>제목</th>
         </tr>
         </thead>
         <tbody>
@@ -35,7 +35,10 @@
             <th>${article.updateDateForPrint}</th>
             <th>${article.extra__writerName}</th>
             <th>
-              <a class="btn-text-link" href="../article/detail?id=${article.id}">${article.title}</a>
+              <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
+                ${article.title}
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi corporis cum dicta doloremque eaque explicabo magni molestiae tenetur voluptatibus. Aspernatur blanditiis ducimus ea maiores nisi optio possimus repellat tempora totam!
+              </a>
             </th>
           </tr>
         </c:forEach>
