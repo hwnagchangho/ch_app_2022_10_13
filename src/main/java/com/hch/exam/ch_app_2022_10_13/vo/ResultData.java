@@ -1,7 +1,9 @@
 package com.hch.exam.ch_app_2022_10_13.vo;
 
 import lombok.Getter;
+import lombok.ToString;
 
+@ToString
 public class ResultData<DT> {
   @Getter
   private String resultCode;

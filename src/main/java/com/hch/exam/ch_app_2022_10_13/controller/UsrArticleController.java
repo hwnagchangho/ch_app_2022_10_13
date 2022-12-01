@@ -84,6 +84,7 @@ public class UsrArticleController {
 
     model.addAttribute("board", board);
     model.addAttribute("boardId", boardId);
+    model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
     model.addAttribute("articlesCount", articlesCount);
     model.addAttribute("pagesCount", pagesCount);
     model.addAttribute("page", page);
@@ -94,6 +95,11 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/detail")
   public String showDetail(Model model, int id) {
+    ResultData increaseHitCountRd = articleService.increaseHitCount(id);
+
+    if(increaseHitCountRd.isFail()) {
+      return rq.historyBackJsOnView(increaseHitCountRd.getMsg());
+    }
 
     Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 

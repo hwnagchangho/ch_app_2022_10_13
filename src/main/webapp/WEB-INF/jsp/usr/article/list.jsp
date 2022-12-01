@@ -55,7 +55,6 @@
             <th>
               <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
                 ${article.title}
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi corporis cum dicta doloremque eaque explicabo magni molestiae tenetur voluptatibus. Aspernatur blanditiis ducimus ea maiores nisi optio possimus repellat tempora totam!
               </a>
             </th>
           </tr>
