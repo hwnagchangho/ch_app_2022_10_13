@@ -16,7 +16,7 @@ public class ResultData<DT> {
   @Getter
   private String data2Name;
   @Getter
-  private DT data2;
+  private Object data2;
 
   public static ResultData from(String resultCode, String msg) {
     return from(resultCode, msg, null, null);
@@ -46,7 +46,7 @@ public class ResultData<DT> {
     return from(oldRd.getResultCode(), oldRd.getMsg(), data1Name, data1);
   }
 
-  public void setData2(String data2Name, DT data2) {
+  public void setData2(String data2Name, Object data2) {
     this.data2Name = data2Name;
     this.data2 = data2;
   }

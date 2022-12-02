@@ -11,6 +11,13 @@
 
 <script>
   function ArticleDetail__increaseHitCount() {
+
+    const localStorageKey = 'article__' + ${param.id} + '__viewDone';
+    if( localStorage.getItem(localStorageKey) ) {
+      return;
+    }
+    localStorage.setItem(localStorageKey, true);
+
     $.get('/usr/article/doIncreaseHitCountRd',
       {
         id : params.id,
@@ -21,9 +28,9 @@
   }
   $(function() {
 <!--    실전코드-->
-<!--    ArticleDetail__increaseHitCount();-->
+    ArticleDetail__increaseHitCount();
 <!--    임시코드-->
-    setTimeout(ArticleDetail__increaseHitCount(), 10000);
+<!--    setTimeout(ArticleDetail__increaseHitCount(), 10000);-->
   })
 </script>
 
@@ -54,7 +61,7 @@
         <tr>
           <th>조회수</th>
           <td>
-            <span class="btn btn-outline btn-success">${article.hitCount}</span>
+            <span class="btn btn-outline btn-success article-detail__hit-count">${article.hitCount}</span>
           </td>
         </tr>
         <tr>
@@ -84,5 +91,5 @@
 <!--  location.href='http://localhost:8081/usr/article/doIncreaseHitCountRd?id=2';-->
 <!--</script>-->
 
-<iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=2" frameborder="0"></iframe>
+<!--<iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=2" frameborder="0"></iframe>-->
 <%@ include file="../common/foot.jspf"%>
