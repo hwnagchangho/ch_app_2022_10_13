@@ -3,6 +3,30 @@
 
 <c:set var="pageTitle" value="게시물 내용" />
 <%@ include file="../common/head.jspf"%>
+
+<script>
+  const params = {};
+  params.id = parseInt(${param.id});
+</script>
+
+<script>
+  function ArticleDetail__increaseHitCount() {
+    $.get('/usr/article/doIncreaseHitCountRd',
+      {
+        id : params.id,
+        ajaxMode: 'Y'
+      }, function(data) {
+        $('.article-detail__hit-count').empty().html(data.data1);
+      }, 'json');
+  }
+  $(function() {
+<!--    실전코드-->
+<!--    ArticleDetail__increaseHitCount();-->
+<!--    임시코드-->
+    setTimeout(ArticleDetail__increaseHitCount(), 3000);
+  })
+</script>
+
 <section class="mt-5 con-min-width">
   <div class="con px-3">
     <div class="table-box-type-1">
@@ -29,7 +53,9 @@
         </tr>
         <tr>
           <th>조회수</th>
-          <td>${article.hitCount}</td>
+          <td>
+            <span class="btn btn-outline btn-success">${article.hitCount}</span>
+          </td>
         </tr>
         <tr>
           <th>제목</th>
@@ -53,4 +79,10 @@
     </div>
   </div>
 </section>
+
+<!--<script>-->
+<!--  location.href='http://localhost:8081/usr/article/doIncreaseHitCountRd?id=2';-->
+<!--</script>-->
+
+<iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=2" frameborder="0"></iframe>
 <%@ include file="../common/foot.jspf"%>
