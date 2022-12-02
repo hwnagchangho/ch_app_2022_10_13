@@ -23,7 +23,7 @@
 <!--    실전코드-->
 <!--    ArticleDetail__increaseHitCount();-->
 <!--    임시코드-->
-    setTimeout(ArticleDetail__increaseHitCount(), 3000);
+    setTimeout(ArticleDetail__increaseHitCount(), 10000);
   })
 </script>
 
