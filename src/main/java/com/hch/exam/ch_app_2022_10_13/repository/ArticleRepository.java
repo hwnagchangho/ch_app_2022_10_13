@@ -70,7 +70,12 @@ public interface ArticleRepository {
   int getLastInsertId();
 
   @Select("""
-          <script>          
+          <script> 
+          SELECT A.*,
+          IFNULL(SUM(RP.point), 0) AS extra__sumReactionPoint,
+          IFNULL(SUM(IF(RP.point &gt; 0, RP.point, 0)), 0) AS extra__goodReactionPoint,
+          IFNULL(SUM(IF(RP.point &lt; 0, RP.point, 0)), 0) AS extra__badReactionPoint
+          FROM(         
           SELECT A.*,
           M.nickname AS extra__writerName
           FROM article AS A
@@ -97,10 +102,14 @@ public interface ArticleRepository {
               </otherwise>
             </choose>
           </if>   
-          ORDER BY A.id DESC
           <if test="limitTake != -1">
             LIMIT #{limitStart}, #{limitTake}
           </if>
+          ) AS A
+          LEFT JOIN reactionPoint AS RP
+          ON relTypeCode = 'article'
+          AND A.id = RP.relId
+          GROUP BY A.id
           </script>          
           """)
   public List<Article> getArticles(@Param("boardId") int boardId, @Param("searchKeywordTypeCode") String searchKeywordTypeCode,

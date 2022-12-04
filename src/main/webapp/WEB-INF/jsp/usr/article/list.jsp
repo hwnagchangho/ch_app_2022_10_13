@@ -30,9 +30,11 @@
     <div class="table-box-type-1">
       <table class="table table-fixed">
         <colgroup>
-          <col width="80"/>
-          <col width="150"/>
-          <col width="150"/>
+          <col width="50"/>
+          <col width="100"/>
+          <col width="100"/>
+          <col width="50"/>
+          <col width="50"/>
           <col width="150"/>
           <col />
         </colgroup>
@@ -41,6 +43,8 @@
           <th>번호</th>
           <th>작성날짜</th>
           <th>수정날짜</th>
+          <th>조회</th>
+          <th>추천</th>
           <th>작성자</th>
           <th>제목</th>
         </tr>
@@ -51,6 +55,8 @@
             <th>${article.id}</th>
             <th>${article.forPrintType1RegDate}</th>
             <th>${article.forPrintType1UpdateDate}</th>
+            <th>${article.hitCount}</th>
+            <th>${article.extra__goodReactionPoint}</th>
             <th>${article.extra__writerName}</th>
             <td>
               <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
