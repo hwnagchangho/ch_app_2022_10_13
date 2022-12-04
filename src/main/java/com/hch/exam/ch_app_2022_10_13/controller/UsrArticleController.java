@@ -2,6 +2,7 @@ package com.hch.exam.ch_app_2022_10_13.controller;
 
 import com.hch.exam.ch_app_2022_10_13.service.ArticleService;
 import com.hch.exam.ch_app_2022_10_13.service.BoardService;
+import com.hch.exam.ch_app_2022_10_13.service.ReactionPointService;
 import com.hch.exam.ch_app_2022_10_13.util.Ut;
 import com.hch.exam.ch_app_2022_10_13.vo.Article;
 import com.hch.exam.ch_app_2022_10_13.vo.Board;
@@ -21,12 +22,13 @@ public class UsrArticleController {
 
   private ArticleService articleService;
   private BoardService boardService;
-
   private Rq rq;
+  private ReactionPointService reactionPointService;
 
-  public UsrArticleController(ArticleService articleService, BoardService boardService, Rq rq) {
+  public UsrArticleController(ArticleService articleService, BoardService boardService, ReactionPointService reactionPointService, Rq rq) {
     this.articleService = articleService;
     this.boardService = boardService;
+    this.reactionPointService = reactionPointService;
     this.rq = rq;
     // 요즘에는 Autowired 보다 생성자를 만들어주는게 추세라고함
   }
@@ -101,7 +103,7 @@ public class UsrArticleController {
 
     model.addAttribute("article", article);
 
-    boolean actorCanMakeReactionPoint = articleService.actorCanMakeReactionPoint(rq.getLoginedMemberId(), id);
+    boolean actorCanMakeReactionPoint = reactionPointService.actorCanMakeReactionPoint(rq.getLoginedMemberId(), "article", id);
 
     model.addAttribute("actorCanMakeReactionPoint", actorCanMakeReactionPoint);
 
