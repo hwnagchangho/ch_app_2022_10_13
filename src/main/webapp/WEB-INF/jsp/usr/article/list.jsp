@@ -56,7 +56,7 @@
             <th>${article.forPrintType1RegDate}</th>
             <th>${article.forPrintType1UpdateDate}</th>
             <th>${article.hitCount}</th>
-            <th>${article.extra__goodReactionPoint}</th>
+            <th>${article.goodReactionPoint}</th>
             <th>${article.extra__writerName}</th>
             <td>
               <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
