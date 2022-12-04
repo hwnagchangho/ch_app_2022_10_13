@@ -59,9 +59,15 @@
           <td>${article.extra__writerName}</td>
         </tr>
         <tr>
-          <th>조회수</th>
+          <th>조회</th>
           <td>
             <span class="btn btn-outline btn-success article-detail__hit-count">${article.hitCount}</span>
+          </td>
+        </tr>
+        <tr>
+          <th>추천</th>
+          <td>
+            <span class="btn btn-outline btn-success">${article.extra__goodReactionPoint}</span>
           </td>
         </tr>
         <tr>
