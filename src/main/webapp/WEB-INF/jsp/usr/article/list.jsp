@@ -49,14 +49,14 @@
         <c:forEach  var="article" items="${articles}">
           <tr>
             <th>${article.id}</th>
-            <th>${article.regDateForPrint}</th>
-            <th>${article.updateDateForPrint}</th>
+            <th>${article.forPrintType1RegDate}</th>
+            <th>${article.forPrintType1UpdateDate}</th>
             <th>${article.extra__writerName}</th>
-            <th>
+            <td>
               <a class="btn-text-link block w-full truncate" href="../article/detail?id=${article.id}">
                 ${article.title}
               </a>
-            </th>
+            </td>
           </tr>
         </c:forEach>
         </tbody>
