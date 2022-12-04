@@ -68,15 +68,16 @@
           <td>
             <div class="flex items-center">
               <span class="badge badge-primary">${article.goodReactionPoint}</span>
-              &nbsp;
+              &nbsp;&nbsp;
               <c:if test="${actorCanMakeReactionPoint}">
-                <button class="btn btn-xs btn-primary">
+                <a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id}&replaceUri=${rq.encodedCurrentUri}" class="btn btn-xs btn-primary">
                   좋아요 👍
-                </button>
+                </a>
                 &nbsp;
-                <button class="btn btn-xs btn-secondary">
+                <a href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id}&replaceUri=${rq.encodedCurrentUri}"
+                   class="btn btn-xs btn-secondary">
                   싫어요 👎
-                </button> <!--       actorCanMakeReactionPoint가 참이면 좋아요 싫어요 표시됨 거짓, 즉 이미 누른상태면 표시가안됌    -->
+                </a> <!--       actorCanMakeReactionPoint가 참이면 좋아요 싫어요 표시됨 거짓, 즉 이미 누른상태면 표시가안됌    -->
               </c:if>
             </div>
           </td>
