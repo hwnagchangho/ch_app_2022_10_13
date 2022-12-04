@@ -31,13 +31,13 @@
         <tr>
           <th>조회</th>
           <td>
-            <span class="btn btn-outline btn-success article-detail__hit-count">${article.hitCount}</span>
+            <span class="badge badge-primary article-detail__hit-count">${article.hitCount}</span>
           </td>
         </tr>
         <tr>
           <th>추천</th>
           <td>
-            <span class="btn btn-outline btn-success">${article.extra__goodReactionPoint}</span>
+            <span class="badge badge-primary">${article.extra__goodReactionPoint}</span>
           </td>
         </tr>
         <tr>

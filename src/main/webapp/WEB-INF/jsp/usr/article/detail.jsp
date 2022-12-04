@@ -58,16 +58,27 @@
           <th>작성자</th>
           <td>${article.extra__writerName}</td>
         </tr>
-        <tr>
-          <th>조회</th>
-          <td>
-            <span class="btn btn-outline btn-success article-detail__hit-count">${article.hitCount}</span>
-          </td>
+        <th>조회</th>
+        <td>
+          <span class="badge badge-primary article-detail__hit-count">${article.hitCount}</span>
+        </td>
         </tr>
         <tr>
           <th>추천</th>
           <td>
-            <span class="btn btn-outline btn-success">${article.extra__goodReactionPoint}</span>
+            <div class="flex items-center">
+              <span class="badge badge-primary article-detail__hit-count">${article.extra__goodReactionPoint}</span>
+              &nbsp;
+              <c:if test="${actorCanMakeReactionPoint}">
+                <button class="btn btn-xs btn-primary">
+                  좋아요 👍
+                </button>
+                &nbsp;
+                <button class="btn btn-xs btn-secondary">
+                  싫어요 👎
+                </button> <!--       actorCanMakeReactionPoint가 참이면 좋아요 싫어요 표시됨 거짓, 즉 이미 누른상태면 표시가안됌    -->
+              </c:if>
+            </div>
           </td>
         </tr>
         <tr>

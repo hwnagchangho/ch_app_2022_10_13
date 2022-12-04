@@ -117,4 +117,9 @@ public class ArticleService {
   public int getArticleHitCount(int id) {
     return articleRepository.getArticleHitCount(id);
   }
+
+  public boolean actorCanMakeReactionPoint(int actorId, int id) {
+    return articleRepository.getSumReactionPointByMemberId(id, actorId) == 0;
+//    getSum에서 반환된 값이 0 이면 비어있다는것이니깐 좋아요를 누를수 있는상태 0 =0 true false가 오면 좋아요를 누를 수 없는 상태
+  }
 }
