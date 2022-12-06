@@ -164,4 +164,22 @@ public interface ArticleRepository {
           </script>
           """)
   public int increaseBadReactionPoint(@Param("id") int id);
+
+  @Update("""
+          <script>
+          UPDATE article
+          SET goodReactionPoint = goodReactionPoint - 1
+          WHERE id = #{id}
+          </script>
+          """)
+  int decreaseGoodReactionPoint(@Param("id") int id);
+
+  @Update("""
+          <script>
+          UPDATE article
+          SET badReactionPoint = badReactionPoint - 1
+          WHERE id = #{id}
+          </script>
+          """)
+  int decreaseBadReactionPoint(int relId);
 }
