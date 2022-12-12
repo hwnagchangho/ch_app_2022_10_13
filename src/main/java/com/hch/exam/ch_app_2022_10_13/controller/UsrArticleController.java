@@ -3,11 +3,9 @@ package com.hch.exam.ch_app_2022_10_13.controller;
 import com.hch.exam.ch_app_2022_10_13.service.ArticleService;
 import com.hch.exam.ch_app_2022_10_13.service.BoardService;
 import com.hch.exam.ch_app_2022_10_13.service.ReactionPointService;
+import com.hch.exam.ch_app_2022_10_13.service.ReplyService;
 import com.hch.exam.ch_app_2022_10_13.util.Ut;
-import com.hch.exam.ch_app_2022_10_13.vo.Article;
-import com.hch.exam.ch_app_2022_10_13.vo.Board;
-import com.hch.exam.ch_app_2022_10_13.vo.ResultData;
-import com.hch.exam.ch_app_2022_10_13.vo.Rq;
+import com.hch.exam.ch_app_2022_10_13.vo.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +22,13 @@ public class UsrArticleController {
   private BoardService boardService;
   private Rq rq;
   private ReactionPointService reactionPointService;
+  private ReplyService replyService;
 
-  public UsrArticleController(ArticleService articleService, BoardService boardService, ReactionPointService reactionPointService, Rq rq) {
+  public UsrArticleController(ArticleService articleService, BoardService boardService, ReactionPointService reactionPointService, ReplyService replyService, Rq rq) {
     this.articleService = articleService;
     this.boardService = boardService;
     this.reactionPointService = reactionPointService;
+    this.replyService = replyService;
     this.rq = rq;
     // 요즘에는 Autowired 보다 생성자를 만들어주는게 추세라고함
   }
@@ -106,6 +106,12 @@ public class UsrArticleController {
     ResultData actorCanMakeReactionPointRd = reactionPointService.actorCanMakeReactionPoint(rq.getLoginedMemberId(), "article", id);
 
     model.addAttribute("actorCanMakeReaction", actorCanMakeReactionPointRd.isSuccess());
+
+    List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMember(), "article", id);
+
+    int repliesCount = replies.size();
+
+    model.addAttribute("repliesCount", repliesCount);
 
     if( actorCanMakeReactionPointRd.getResultCode().equals("F-2")) {
       int sumReactionPointByMemberId = (int)actorCanMakeReactionPointRd.getData1();
