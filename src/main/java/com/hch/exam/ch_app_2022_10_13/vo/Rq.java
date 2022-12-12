@@ -47,6 +47,9 @@ public class Rq {
     this.req.setAttribute("rq", this); //119강에서 했어야함 , BeforeActionInterceptor 에서 해주던걸 여기서해줌
   }
 
+  public boolean isNotLogined(){
+    return !isLogined;
+  }
   public void printHistoryBackJs(String msg) {
     resp.setContentType("text/html; charset=UTF-8"); //한글
 
