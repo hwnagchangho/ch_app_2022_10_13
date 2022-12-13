@@ -10,6 +10,18 @@ import java.util.List;
 
 @Mapper
 public interface ReplyRepository {
+  @Select("""
+          SELECT R.*,
+          M.nickname AS extra__writerName
+          FROM reply AS R
+          LEFT JOIN `member` AS M
+          ON R.memberId = M.id
+          WHERE R.relTypeCode = #{relTypeCode}
+          AND R.relId = #{relId}
+          ORDER BY R.id DESC
+          """)
+  List<Reply> getForPrintReplies(@Param("relTypeCode") String relTypeCode, @Param("relId") int relId);
+
   @Insert("""
           INSERT INTO reply 
           SET regDate = NOW(), 
@@ -19,7 +31,7 @@ public interface ReplyRepository {
           relId=#{relId}, 
           body=#{body}
           """)
-  void writeArticle(@Param("memberId") int memberId,
+  void writeReply(@Param("memberId") int memberId,
                     @Param("relTypeCode") String relTypeCode,
                     @Param("relId") int relId, @Param("body") String body);
 
@@ -27,15 +39,4 @@ public interface ReplyRepository {
           SELECT LAST_INSERT_ID()
           """)
   int getLastInsertId();
-
-  @Select("""
-          SELECT R.*
-          FROM reply AS R
-          LEFT JOIN `member` AS M
-          ON R.memberId = M.id
-          WHERE R.relTypeCode = #{relTypeCode}
-          AND R.relId = #{relId}
-          ORDER BY R.id DESC
-          """)
-  List<Reply> getForPrintReplies(@Param("relTypeCode") String relTypeCode, @Param("relId") int relId);
 }

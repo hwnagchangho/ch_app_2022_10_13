@@ -32,7 +32,7 @@ public class UsrReplyController {
     }
 
 
-    ResultData<Integer> writeArticleRd = replyService.writeArticle(rq.getLoginedMemberId(), relTypeCode, relId, body);
+    ResultData<Integer> writeArticleRd = replyService.writeReply(rq.getLoginedMemberId(), relTypeCode, relId, body);
 
     switch (relTypeCode){
       case "article":

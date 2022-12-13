@@ -17,9 +17,9 @@ public class ReplyService {
   public ReplyService(ReplyRepository repository) {
     this.replyRepository = repository;
   }
-  public ResultData<Integer> writeArticle(int actorId, String relTypeCode, int relId, String body) {
+  public ResultData<Integer> writeReply(int actorId, String relTypeCode, int relId, String body) {
 
-    replyRepository.writeArticle(actorId, relTypeCode, relId, body);
+    replyRepository.writeReply(actorId, relTypeCode, relId, body);
 
     int id = replyRepository.getLastInsertId();
 
