@@ -200,13 +200,23 @@
   <div class="con mx-auto px-3">
     <h1>댓글 개수(${replies.size()})</h1>
     <div class="reply-list mt-3">
-      <c:forEach  var="reply" items="${replies}">
+      <c:forEach var="reply" items="${replies}">
         <div class="reply-list__head">
           <div class="flex flex-col">
             <span class="font-bold">${reply.extra__writerName}</span>
             <span>${reply.forPrintType2RegDate}</span>
             <span>${reply.forPrintType2UpdateDate}</span>
-            <span>추천 : ${reply.goodReactionPoint}</span>
+            <div class="flex">
+              <span>추천 : ${reply.goodReactionPoint}</span>
+              <div class="modifyAndDelete-btn ml-auto text-gray-400">
+                <c:if test="${reply.extra__actorCanModify}">
+                  <a href="../reply/modify?id=${reply.id}">수정</a>
+                </c:if>
+                <c:if test="${reply.extra__actorCanDelete}">
+                  <a  onclick="if( confirm('정말 삭제하시겠습니까?') == false ) return false" href="../reply/doDelete?id=${reply.id}">삭제</a>
+                </c:if>
+              </div>
+            </div>
           </div>
         </div>
         <div class="reply-list__body border-b border-gray-300 my-3">
