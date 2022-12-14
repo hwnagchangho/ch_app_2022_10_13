@@ -204,8 +204,8 @@
         <div class="reply-list__head">
           <div class="flex flex-col">
             <span class="font-bold">${reply.extra__writerName}</span>
-            <span>${reply.forPrintType2RegDate}</span>
-            <span>${reply.forPrintType2UpdateDate}</span>
+            <span>작성날짜 : ${reply.forPrintType2RegDate}</span>
+            <span>수정날짜 : ${reply.forPrintType2UpdateDate}</span>
             <div class="flex">
               <span>추천 : ${reply.goodReactionPoint}</span>
               <div class="modifyAndDelete-btn ml-auto text-gray-400">
