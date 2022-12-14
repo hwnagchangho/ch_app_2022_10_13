@@ -2,6 +2,7 @@ package com.hch.exam.ch_app_2022_10_13.controller;
 
 import com.hch.exam.ch_app_2022_10_13.service.ReplyService;
 import com.hch.exam.ch_app_2022_10_13.util.Ut;
+import com.hch.exam.ch_app_2022_10_13.vo.Reply;
 import com.hch.exam.ch_app_2022_10_13.vo.ResultData;
 import com.hch.exam.ch_app_2022_10_13.vo.Rq;
 import org.springframework.stereotype.Controller;
@@ -34,11 +35,47 @@ public class UsrReplyController {
 
     ResultData<Integer> writeArticleRd = replyService.writeReply(rq.getLoginedMemberId(), relTypeCode, relId, body);
 
-    switch (relTypeCode){
-      case "article":
-        replaceUri = Ut.f("../article/detail?id=%d", relId);
+    if (Ut.empty(replaceUri)) {
+      switch (relTypeCode) {
+        case "article":
+          replaceUri = Ut.f("../article/detail?id=%d", relId);
+          break;
+      }
     }
 
     return rq.jsReplace(writeArticleRd.getMsg(), replaceUri);
   }
+
+  @RequestMapping("/usr/reply/doDelete")
+  @ResponseBody
+  public String  doDelete(int id, String replaceUri) {
+
+    if (Ut.empty(id)) {
+      return rq.jsHistoryBack("id(를) 입력해주세요");
+    }
+
+    Reply reply = replyService.getForPrintReply(rq.getLoginedMember(), id);
+
+    if (reply == null) {
+      return rq.jsHistoryBack(Ut.f("%d번 댓글이 존재하지 않습니다.", id));
+    }
+
+    if(reply.isExtra__actorCanDelete() ==false){
+      return rq.jsHistoryBack(Ut.f("%d번 댓글을 삭제할 권한이 없습니다.", id));
+    }
+
+
+    ResultData replyDeleteRd = replyService.deleteReply(id);
+
+    if (Ut.empty(replaceUri)) {
+      switch (reply.getRelTypeCode()) {
+        case "article":
+          replaceUri = Ut.f("../article/detail?id=%d", reply.getRelId());
+          break;
+      }
+    }
+
+    return rq.jsReplace(replyDeleteRd.getMsg(), replaceUri);
+  }
 }
+

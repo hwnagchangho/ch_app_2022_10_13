@@ -1,10 +1,7 @@
 package com.hch.exam.ch_app_2022_10_13.repository;
 
 import com.hch.exam.ch_app_2022_10_13.vo.Reply;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -21,6 +18,16 @@ public interface ReplyRepository {
           ORDER BY R.id DESC
           """)
   List<Reply> getForPrintReplies(@Param("relTypeCode") String relTypeCode, @Param("relId") int relId);
+
+  @Select("""
+          SELECT R.*,
+          M.nickname AS extra__writerName
+          FROM reply AS R
+          LEFT JOIN `member` AS M
+          ON R.memberId = M.id
+          WHERE R.id = #{id}
+          """)
+  Reply getForPrintReply(@Param("id") int id);
 
   @Insert("""
           INSERT INTO reply 
@@ -39,4 +46,12 @@ public interface ReplyRepository {
           SELECT LAST_INSERT_ID()
           """)
   int getLastInsertId();
+
+
+  @Delete("""
+          DELETE 
+          FROM reply
+          WHERE id = #{id}
+          """)
+  void deleteReply(int id);
 }
