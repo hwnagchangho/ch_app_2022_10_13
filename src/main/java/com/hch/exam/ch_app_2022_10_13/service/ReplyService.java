@@ -13,9 +13,11 @@ import java.util.List;
 @Service
 public class ReplyService {
   private ReplyRepository replyRepository;
+  private MemberService memberService;
 
-  public ReplyService(ReplyRepository repository) {
+  public ReplyService(ReplyRepository repository, MemberService memberService) {
     this.replyRepository = repository;
+    this.memberService = memberService;
   }
 
   public ResultData<Integer> writeReply(int actorId, String relTypeCode, int relId, String body) {
@@ -31,6 +33,9 @@ public class ReplyService {
     List<Reply> replies = replyRepository.getForPrintReplies(relTypeCode, relId);
 
     for (Reply reply : replies) {
+      if(actor == null){
+        return replies; //오류 해결 exam1206에 적어놓음
+      }
       updateForPrintData(actor, reply);
     }
 
