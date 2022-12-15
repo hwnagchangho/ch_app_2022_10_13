@@ -39,6 +39,9 @@
           <th>전화번호</th>
           <td>
             ${rq.loginedMember.cellphoneNo}
+<!--            ${Ut.getUriEncoded('../article/modify')}-->
+<!--            ${Ut.getUriEncoded('../member/modify')}-->
+<!--     이건왜써주는거지 ????       -->
           </td>
         </tr>
         <tr>

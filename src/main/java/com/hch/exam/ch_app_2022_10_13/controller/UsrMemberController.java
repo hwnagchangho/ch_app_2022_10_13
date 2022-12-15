@@ -75,10 +75,6 @@ public class UsrMemberController {
   @ResponseBody
   public String doLogin (String loginId, String loginPw){
 
-    if(rq.isLogined()){
-      return Ut.jsHistoryBack("이미 로그인 되었습니다.");
-    }
-
     if( Ut.empty(loginId)) {
       return Ut.jsHistoryBack("loginId(을)를 입력 해주세요.");
     }
@@ -105,10 +101,6 @@ public class UsrMemberController {
   @ResponseBody
   public String doLogout (){
 
-    if(!rq.isLogined()){
-      return rq.jsHistoryBack("이미 로그아웃 상태입니다.");
-    }
-
     rq.logout();
 
     return rq.jsHistoryBack("로그아웃 되었습니다.");
@@ -122,6 +114,19 @@ public class UsrMemberController {
   @RequestMapping("/usr/member/checkPassword")
   public String showCheckPassword (HttpSession httpSession){
     return "usr/member/checkPassword";
+  }
+
+  @RequestMapping("/usr/member/doCheckPassword")
+  @ResponseBody
+  public String doCheckPassword (String loginPw, String replaceUri){
+    if( Ut.empty(loginPw)) {
+      return rq.jsHistoryBack("loginPw(을)를 입력 해주세요.");
+    }
+
+    if( rq.getLoginedMember().getLoginPw().equals(loginPw) == false ) {
+      return rq.jsHistoryBack("비밀번호가 일치하지 않습니다.");
+    }
+    return rq.jsReplace("", replaceUri);
   }
 
 }
